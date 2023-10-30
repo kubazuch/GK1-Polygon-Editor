@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.kubazuch.PolygonFrame">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="20" y="20" width="1224" height="429"/>
+    </constraints>
+    <properties>
+      <minimumSize width="24" height="24"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="ec10a" binding="canvas" custom-create="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="400" height="400"/>
+          </grid>
+          <gridbag weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <minimumSize width="500" height="500"/>
+          <preferredSize width="500" height="500"/>
+        </properties>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <grid id="9b1e2" binding="sidePanel" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="250" height="-1"/>
+            <maximum-size width="250" height="-1"/>
+          </grid>
+          <gridbag weightx="0.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <foreground color="-7367774"/>
+          <minimumSize width="200" height="161"/>
+          <preferredSize width="200" height="222"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="baa96" binding="toolsPanel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="5" bottom="0" right="5"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Tools"/>
+            <children>
+              <component id="16bd4" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Line algorithm:"/>
+                </properties>
+              </component>
+              <vspacer id="7a0ea">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="7b0d8" class="javax.swing.JRadioButton" binding="builtInRadioButton" custom-create="true" default-binding="true">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <selected value="true"/>
+                  <text value="Built-In"/>
+                </properties>
+              </component>
+              <component id="5a9f7" class="javax.swing.JRadioButton" binding="bresenhamRadioButton" custom-create="true" default-binding="true">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Bresenham"/>
+                </properties>
+              </component>
+              <component id="bf25e" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Offset:"/>
+                </properties>
+              </component>
+              <component id="a61a4" class="javax.swing.JSlider" binding="offsetSlider" custom-create="true">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <value value="0"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="6a118" binding="infoPanel" custom-create="true" layout-manager="CardLayout" hgap="5" vgap="0" show="5d5a0">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Selection"/>
+            <children>
+              <grid id="b53d4" binding="polygonPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <card name="PolygonCard"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="475f7" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="131" height="16"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <alignmentY value="0.5"/>
+                      <text value="Number of edges:"/>
+                    </properties>
+                  </component>
+                  <component id="c07dc" class="javax.swing.JLabel" binding="edgeCount">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="0"/>
+                    </properties>
+                  </component>
+                  <component id="ddd00" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Color:"/>
+                    </properties>
+                  </component>
+                  <component id="5be15" class="com.kubazuch.component.ColorChooserButton" binding="polygonColor" custom-create="true">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="2"/>
+                      <horizontalTextPosition value="2"/>
+                      <iconTextGap value="30"/>
+                      <inheritsPopupMenu value="false"/>
+                      <label value=""/>
+                      <maximumSize width="30" height="20"/>
+                      <minimumSize width="30" height="20"/>
+                      <opaque value="true"/>
+                      <preferredSize width="30" height="20"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="be9cc" class="javax.swing.JButton" binding="polygonDelete" custom-create="true">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <label value="Delete"/>
+                      <text value="Delete"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="822bd" binding="edgePanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <card name="EdgeCard"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="b3a10" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Constraint:"/>
+                    </properties>
+                  </component>
+                  <vspacer id="31268">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="f8229" class="javax.swing.JComboBox" binding="constraintBox" custom-create="true">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="fca43" class="javax.swing.JButton" binding="edgeSplit" custom-create="true">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <label value="Split"/>
+                      <text value="Split"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="f5212" binding="vertexPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <card name="VertexCard"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="c3b0b" class="javax.swing.JButton" binding="vertexDelete" custom-create="true">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <label value="Delete"/>
+                      <text value="Delete"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="5d5a0" binding="emptyPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <card name="NoneCard"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
+          </grid>
+          <grid id="f96b3" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="1.0"/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Polygon browser"/>
+            <children>
+              <scrollpane id="54a5" binding="scrollPane">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="55bc3" class="javax.swing.JList" binding="polygonList" custom-create="true">
+                    <constraints/>
+                    <properties>
+                      <dropMode value="INSERT"/>
+                      <selectionMode value="0"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="82051" class="javax.swing.JButton" binding="clearButton" custom-create="true">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Clear"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <component id="c803d" class="javax.swing.JSeparator">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <orientation value="1"/>
+          <preferredSize width="7" height="0"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="drawAlgorithm">
+      <member id="7b0d8"/>
+      <member id="5a9f7"/>
+    </group>
+  </buttonGroups>
+</form>
