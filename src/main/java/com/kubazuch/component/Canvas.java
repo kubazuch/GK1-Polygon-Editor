@@ -14,7 +14,7 @@ import java.util.*;
 public class Canvas extends JPanel implements MouseMotionListener {
 
     public enum State {
-        IDLE, DRAW
+        IDLE, DRAW, DRAW_CIRCLE
     }
 
     private final Random random;
@@ -27,6 +27,7 @@ public class Canvas extends JPanel implements MouseMotionListener {
     private Point circleMiddle;
     private LinkedList<Point> drawing;
     private final BetterListModel<Polygon> polygons;
+    private final ArrayList<Circle> circles;
     private Drawable selection;
     private Drawable highlight;
 
@@ -41,6 +42,7 @@ public class Canvas extends JPanel implements MouseMotionListener {
 
         this.drawing = new LinkedList<>();
         this.polygons = new BetterListModel<>(new ArrayList<>());
+        this.circles = new ArrayList<>();
 
         this.parent = parent;
 
@@ -97,6 +99,19 @@ public class Canvas extends JPanel implements MouseMotionListener {
 
                 break;
             }
+        }
+
+        if (!flag) {
+            for (Circle c : circles) {
+                Drawable target = c.hitTest(mousePos);
+                if (target != null) {
+                    flag = true;
+                    highlight = target;
+                    break;
+                }
+            }
+
+
         }
 
         if (!flag && highlight != null) {
@@ -210,6 +225,13 @@ public class Canvas extends JPanel implements MouseMotionListener {
             repaint();
         });
 
+        parent.radiusSlider.addChangeListener(e -> {
+            if(selection instanceof Circle c) {
+                c.setRadius(parent.radiusSlider.getValue());
+                repaint();
+            }
+        });
+
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -275,6 +297,14 @@ public class Canvas extends JPanel implements MouseMotionListener {
 
         graphics2d.setColor(Color.WHITE);
         graphics2d.fillRect(0, 0, getWidth(), getHeight());
+        graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+        if (circleMiddle != null) {
+            DrawUtils.drawWuCirlce(graphics2d, circleMiddle, (int) Math.round(circleMiddle.distance(mousePos)));
+        }
+
+        for (Circle c : circles) {
+            c.draw(graphics2d);
+        }
 
         graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
@@ -317,6 +347,13 @@ public class Canvas extends JPanel implements MouseMotionListener {
 
                 repaint();
             }
+            case DRAW_CIRCLE -> {
+                Circle c = new Circle(circleMiddle, (int) circleMiddle.distance(mousePos));
+                circles.add(c);
+                circleMiddle = null;
+                canvasState = State.IDLE;
+                repaint();
+            }
         }
     }
 
@@ -331,8 +368,14 @@ public class Canvas extends JPanel implements MouseMotionListener {
     public void onRMBPressed(MouseEvent e) {
         switch (canvasState) {
             case IDLE -> {
-                canvasState = State.DRAW;
-                drawing.add(e.getPoint());
+                if (e.isControlDown()) {
+                    canvasState = State.DRAW_CIRCLE;
+                    circleMiddle = e.getPoint();
+                } else {
+                    canvasState = State.DRAW;
+                    drawing.add(e.getPoint());
+                }
+
                 repaint();
             }
             case DRAW -> {
@@ -385,6 +428,11 @@ public class Canvas extends JPanel implements MouseMotionListener {
         } else if (selection instanceof Vertex) {
             ((TitledBorder) parent.infoPanel.getBorder()).setTitle("Vertex");
             cardLayout.show(parent.infoPanel, "VertexCard");
+            parent.infoPanel.repaint();
+        } else if (selection instanceof Circle circle) {
+            ((TitledBorder) parent.infoPanel.getBorder()).setTitle("Circle");
+            parent.radiusSlider.setValue(circle.getRadius());
+            cardLayout.show(parent.infoPanel, "CircleCard");
             parent.infoPanel.repaint();
         } else {
             ((TitledBorder) parent.infoPanel.getBorder()).setTitle("Selection");

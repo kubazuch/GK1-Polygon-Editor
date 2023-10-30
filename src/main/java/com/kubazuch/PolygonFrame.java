@@ -35,6 +35,8 @@ public class PolygonFrame extends JFrame {
 	public JRadioButton bresenhamRadioButton;
 	public JSlider offsetSlider;
 	public JButton clearButton;
+	public JPanel circlePanel;
+	public JSlider radiusSlider;
 
 	/******************************************************/
 
@@ -65,6 +67,7 @@ public class PolygonFrame extends JFrame {
 		bresenhamRadioButton = new JRadioButton();
 		offsetSlider = new JSlider();
 		clearButton = new JButton();
+		radiusSlider = new JSlider();
 
 		canvas = new Canvas(this);
 
